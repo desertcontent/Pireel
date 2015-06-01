@@ -1,0 +1,13 @@
+/* Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+@font-face {
+    font-family: 'AmbleLight';
+    src: url('Amble-Light-webfont.eot');
+    src: url('Amble-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Amble-Light-webfont.woff') format('woff'),
+         url('Amble-Light-webfont.ttf') format('truetype'),
+         url('Amble-Light-webfont.svg#AmbleLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

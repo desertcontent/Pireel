@@ -1,0 +1,13 @@
+/* Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+@font-face {
+    font-family: 'AmbleRegular';
+    src: url('Amble-Regular-webfont.eot');
+    src: url('Amble-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Amble-Regular-webfont.woff') format('woff'),
+         url('Amble-Regular-webfont.ttf') format('truetype'),
+         url('Amble-Regular-webfont.svg#AmbleRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

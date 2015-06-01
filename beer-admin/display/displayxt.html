@@ -1,0 +1,774 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+    <title>DataBrew Beer Display</title>
+    <meta charset='utf-8' />
+    <meta content='width=device-width, initial-scale=1.0' name='viewport' />
+  <!-- StyleSheets (CSS) -->
+		 
+  	 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.css" />  
+	 <link rel="stylesheet" href="/css/themes/pourhouse.css" /> 
+	 <link rel="stylesheet" href="/css/themes/jqm-icon-pack-2.0-original.css" />   
+	 <link rel="stylesheet" id="camera-css"  href="/css/camera.css" type="text/css" media="all"> 
+	 <link rel="stylesheet" href="/css/pourhouse.css" /> 
+	 <link rel="stylesheet" href="/css/display1.css" /> 
+	   <link rel="stylesheet" href="/css/jquery.maximage.css" type="text/css" media="screen" title="CSS" charset="utf-8" /> 
+	  <!--<link rel="stylesheet" href="lib/css/jquery.maximage.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="lib/css/screen.css?v=1.2" type="text/css" media="screen" charset="utf-8" />-->	 
+	 <!-- JavaScripts -->
+	 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	 <script src="/js/modernizr-latest.js" type="text/javascript"></script>
+	 <!--<script src="/js/custom.js"></script>-->
+
+	 <script type="text/javascript" src="/js/jquery.easing.1.3.js"></script> 
+	 <script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
+	 
+     <script type="text/javascript" src="/js/camera.min.js"></script> 
+     <script type="text/javascript" src="/js/jquery.dotdotdot.min.js"></script> 
+    <link rel="stylesheet" href="/css/whhg.css">
+     <script src="/js/jquery.marquee.js"  type="text/javascript"></script> 
+    <script src="/js/jquery.cycle.all.js" type="text/javascript"></script>
+	<script src="/js/jquery.maximage.min.js" type="text/javascript"></script>
+	
+		<style type="text/css" media="screen">
+			/* I wanted to center my loader */
+			#cycle-loader {
+				height:32px;
+				left:50%;
+				margin:-8px 0 0 -8px;
+				position:absolute;
+				top:50%;
+				width:32px;
+				z-index:999;
+			}
+			
+			/*I want to avoid jumpiness as the JS loads, so I initially hide my cycle*/
+			#maximage {
+				display:none;/* Only use this if you fade it in again after the images load */
+				position:fixed !important;
+			}
+			
+			/*Set my gradient above all images*/
+			#gradient {
+				left:0;
+				height:100%;
+				position:absolute;
+				top:0;
+				width:100%;
+				z-index:999;
+			}
+			
+			/*Set my logo in bottom left*/
+			#logo {
+				bottom:30px;
+				height:auto;
+				right:30px;
+				position:absolute;
+				/*width:34%;*/
+				z-index:1000;
+				float:right;
+			}
+			#logo img {
+				width:100%;
+			}
+			
+			#arrow_left, #arrow_right {
+				bottom:30px;
+				height:67px;
+				position:absolute;
+				right:30px;
+				width:36px;
+				z-index:1000;
+			}
+			#arrow_left {
+				right:86px;
+			}
+			
+			#arrow_left:hover, #arrow_right:hover {
+				bottom:29px;
+			}
+			#arrow_left:active, #arrow_right:active {
+				bottom:28px;
+			}
+			
+			a {color:#666;text-decoration:none;}
+			a:hover {text-decoration:underline;}
+			
+			.in-slide-content { 
+				color:#ffffff;
+				float:right;
+				font-family:'Helvetica Neue', helvetica;
+				 font-size:60px;  
+				font-weight:bold;
+				right:0;
+				margin:40px;
+				padding:25px;
+				position:absolute;
+				top:0;
+				width:90%;
+				z-index:9999; /* Show above .gradient */
+				text-shadow: #533a19 0.1em 0.1em 0.4em;
+				-webkit-font-smoothing:antialiased;
+			}
+			.light-text {color:#ddd;text-shadow: 0 1px 0 #666;}
+			.smaller-text {font-size:30px;}
+			.youtube-video, video {
+				left:0;
+				position:absolute;
+				top:0;
+			}
+
+
+.header {font-size:75px;margin-top:25px;margin-bottom:25px;
+text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+	
+}
+			
+			#specials {width:49%;background:transparent url(/images/caption-bg.png) 0 0 repeat;-moz-border-radius:20px;
+-webkit-border-radius:20px;
+-khtml-border-radius:20px;
+border-radius:20px;
+padding:30px;
+max-width:775px;
+}
+ 
+#specials > h1,#specials > h2,#specials > h3,#specials > h4,#specials > h5,#specials > h6,#specials > p{color:#ffffff; font-weight:normal;margin:0px;} 
+ #specials > .header{font-size:70px;font-weight:bold;vertical-align:top;margin-top:0px;padding-top:0px;color:#ffffff; }
+
+ 
+ #specials > .title{margin-top:25px;font-size:50px;font-weight:bold;}
+ #specials > .heading{padding-top:10px;font-size:40px;}
+ #specials > .subheading{padding-top:5px;font-size:30px;}
+ #specials > .details{padding-top:5px;font-size:30px;}  
+ 
+  #beer{padding-top:0px;margin-top:15px;}
+ .beer-special-header{font-size:90px;text-align:center;margin-top:10px;}
+ 
+ .sbeer-slide{color:#ffffff;clear:both;margin-top:25px;text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135; background:transparent url(/images/caption-bg.png) 0 0 repeat;
+	 padding:30px;
+	 -webkit-border-radius:20px;
+-khtml-border-radius:20px;
+border-radius:20px;
+
+ }
+ .slabel-block img{width:250px;margin-right:25px;vertical-align:top;float:left;}
+ .sbeer-name{font-size:80px;clear:both;color:#ffffff;}
+ .sbeer-slide{font-size:40px;}
+ .sbeer-style{font-size:70px;}
+ .sbeer-abv{font-size:60px; margin-right:25px;}
+ .sbeer-ibu{font-size:60px; margin-right:25px;}
+ .sbrewery-block{margin-top:25px;}
+
+ .sbrewery-block img{width:200px;margin-right:25px;vertical-align:top;float:left;}
+ .sbrewery-name{font-size:60px;}
+ .sbrewery-city{font-size:50px; margin-right:25px;}
+ .sbrewery-url{font-size:50px; margin-right:25px;}
+ 
+ .sprice-block{text-align:center;margin-top:25px;}
+ .sbeer-glass{font-size:70px; margin-right:100px; }
+ .sbeer-growler{font-size:70px;  }   
+  		</style>
+
+</head>
+<body>
+    <script>
+    
+$(document).ready(function() {
+
+
+		var cycledata=$('#main-slideshow').html();
+		var wrapperdata=$('#main-wrapper').html();
+		var featuredata=$('#feature-block').html();
+       		   
+       		   
+       		   var ind=-1;
+			   var flg='s';
+// BEER LIST SUCCESS        
+         function onSuccessBeerList(data, status)
+        {
+			 
+			function roundNumber(number, digits) {
+            var multiple = Math.pow(10, digits);
+            var rndedNum = Math.round(number * multiple) / multiple;
+            return rndedNum;
+        }
+        
+            var totbeers = data.length;
+            var totcycles = roundNumber((data.length/10),0);
+            var lastcyclebeer = totcycles*10;
+            var beerslastcycle = totbeers-(totcycles*10);
+           
+// LOAD MENU INTO FEATURE BLOCK   
+			/* $('#feature-block').load('../getvenue3.php #lamenucontent',function(){
+					$('#feature-block').trigger('create');
+					$('#lamenucontent').prepend('<h2 class="header"><img src="/images/Pour-House-Grill-logo-brown.png" style="height:75px;margin-right:25px;"/>Happy Hour Menu</h2>');
+					$('#lamenucontent').append('<span style="font-size:10px;color:#888;">Food Menu </span><img height="25" width="155" src="http://locu.com/static/images/dev/poweredby-gray@2x.png" alt="Menu Powered by Locu"  style="margin-left:5px;vertical-align:middle;"/><span style="font-size:10px;margin-left:65px;color:#888;font-weight:bold;">Display DEVELOPED BY</span><img height="25" width="66" src="/images/datafog_logo_new.png" alt="Powered by Datafog" style="margin-left:10px;vertical-align:middle;"/>');
+					$('#wedge').attr('src','/list_icons/Salads_brown.png');
+					$('#lamenucontent').css('max-height','665px');
+					$('#lamenucontent').css('max-width','480px');
+					$('#lamenucontent').css('overflow-y','noscroll');
+					$('#lamenucontent').css('padding-bottom','0px');
+					$('#lamenucontent').css('padding-top','0px');
+					$('#lamenucontent').css('margin-left','15px');
+					$('#feature-block').css('box-shadow', 'inset 0 0   20px #c3996a');});*/
+					 
+					
+					$.ajax({
+                    type: "POST",
+                    url: "../getspecials.php",
+                    cache: false,
+                   /* data: formData,*/
+                    dataType:"json",
+                    success: onSuccessSpecials,
+                    error: onErrorSpecials
+                });
+  
+				 function onSuccessSpecials(data, status)
+        {
+         
+        
+		/*	var spec1 ='<h2 class="title">'+data.special_1+'</h2><h3 class="heading">'+data.special_1h+'</h3><h4 class="subheading">'+data.special_1s+'</h4><p  class="details">'+data.special_1d+'</p>';
+			$('#specials').append(spec1);
+			var spec2 ='<h2 class="title">'+data.special_2+'</h2><h3 class="heading">'+data.special_2h+'</h3><h4 class="subheading">'+data.special_2s+'</h4><p  class="details">'+data.special_2d+'</p>';
+			$('#specials').append(spec2);
+			var spec3 ='<h2 class="title">'+data.special_3+'</h2><h3 class="heading">'+data.special_3h+'</h3><h4 class="subheading">'+data.special_3s+'</h4><p  class="details">'+data.special_3d+'</p>';
+			$('#specials').append(spec3);
+			var spec4 ='<h2 class="title">'+data.special_4+'</h2><h3 class="heading">'+data.special_4h+'</h3><h4 class="subheading">'+data.special_4s+'</h4><p  class="details">'+data.special_4d+'</p>';
+			$('#specials').append(spec4); */
+			
+			
+			 
+			 	$('.marquee').html(data.marquee_text).show();
+			 	$('.marquee').marquee({
+				  speed: 25000,
+				  gap: 50,
+				  delayBeforeStart: 0,
+				  direction: 'left',
+				  duplicated: true
+				  });
+
+       
+        }
+  
+        function onErrorSpecials(data, status)
+        {
+            // handle an error
+        }       
+
+					 
+					 
+					/* $('#specials').append('<h2 class="title">Food Special</h2><h3 class="heading">1/2 Off Any Appetizer</h3><h4 class="subheading">Try Our Wings!</h4><p  class="details">One discount per table please.</p>');	
+					 $('#specials').append('<h2 class="title">Beer Special</h2><h3 class="heading">Union Jack IPA</h3><h4 class="subheading">Pints $3.50 During Happy Hour!</h4><p  class="details">From Firestone Brewing</p>');	
+					 $('#specials').append('<h2 class="title">Wine of the Month</h2><h3 class="heading">Santa Margharita Pinio Grigio</h3><h4 class="subheading">$3.50 per Glass</h4><p  class="details">A fine Pinio from Spain. One of our favorites!</p>');
+					 $('#specials').append('<h2 class="title">Mongo\'s Burger of the Month</h2><h3 class="heading">Pour House BBQ Burger</h3><h4 class="subheading">$8.95</h4><p  class="details">6 oz. Angus Beef Burger, House BBQ Sauce & Bacon. Add your choice of cheese and your rockin\'.</p>');	*/	
+					 	 
+					
+			 //$('#feature-block').trigger('create'); 
+			  
+				 
+				
+				
+// LOAD BUSINESS BRANDING BLOG INTO GRIDVIEW				             
+             $('#beers-gridview').append('<a href="#" data-role="button" data-inline="true" data-theme="b" class="col1 company-block"><div id="test"><img class="ui-li-thumb phlogo" src="/images/Pour-House-Grill-logo-white.png"/><img class="ui-li-thumb displayqr" src="/images/growler.png"/><h3 class="ui-li-heading">The Pour House Grill</h3><p class="beer-style">Bend, Oregon</p><p  class="brewery-name">Beer Menu</p><p  class="brewery-city">By the Growler or by the Pint!</p><p  class="ui-li-desc beer-desc">The Pour House Grill is in Bend, Oregon</p><p class="ui-li-desc beer-abv"></p><p class="ui-li-desc beer-ibu"></p><p class="ui-li-desc beer-glass"> </p><p class="ui-li-desc beer-growler"> </p></div><div id="test2"><p  class="brewery-name">Beer, Burgers, Ribs & Wings</p><p  class="brewery-city">... And Sports Too!</p><p  class="brewery-name">Try Our Philly Cheese Steak</p><p  class="brewery-city" style="font-size:80%">A Touch of the East Coast in Oregon!</p></div></a>'); 
+			 		
+			 					    					 
+// LOAD BEERS INTO GRID AND SPLASH								   
+            Object.keys(data).forEach(function(key) {
+// LOAD BEERS INTO GRID            
+            $('#beers-gridview').append('<a id="'+data[key].id+'" href="#" data-role="button" data-inline="true" data-theme="b" class="col1"><img class="ui-li-thumb" src="'+data[key].beer_label_url+'"/><h3 class="ui-li-heading">'+data[key].beer_name+'</h3><p class="beer-style">'+data[key].beer_style+'</p><p  class="brewery-name">'+data[key].brewery_name+'</p><p  class="brewery-city">'+data[key].brewery_city+'</p><p  class="ui-li-desc brewery-durl">'+data[key].brewery_url+'</p><p  class="ui-li-desc beer-desc">'+data[key].beer_desc+'</p><p class="ui-li-desc beer-abv">ABV: '+data[key].beer_abv+'%</p><p class="ui-li-desc beer-ibu">IBUs: '+data[key].beer_ibu+'</p><p class="ui-li-desc beer-glass">Pint: $'+data[key].beer_glass_price+'</p><p class="ui-li-desc beer-growler">Growler: $'+data[key].beer_growler_price+'</p></a>');
+              $('#beers-gridview').trigger('create');
+        
+// LOAD BEERS INTO SPLASH BLOCK             
+            $('#splash-block').append('<div class="beer-slide" data-src="'+data[key].beer_label_url+'" data-transPeriod="0"><div class="camera_caption fadeIn beer-splash frontpageshowcase" ><a  id="'+data[key].beer_name+'-splash" href="#" data-role="button" data-inline="true" data-theme="b" class="colx"><p class="ui-li-desc label-block"><img class="ui-li-thumb" src="'+data[key].beer_label_url+'"/><span class="beer-style">'+data[key].beer_style+'</span><br /><span class="beer-abv">ABV: &nbsp;'+data[key].beer_abv+'%</span><br /><span class="beer-ibu">IBUs: '+data[key].beer_ibu+'</span></p><h3 class=" beer-name">'+data[key].beer_name+'</h3><p  id="beer-desc" class="ui-li-desc beer-desc">'+data[key].beer_desc+'</p><p class="ui-li-desc brewery-block"><img class="ui-li-thumb brewery-label" src="'+data[key].brewery_label_url+'"/><span  class="brewery-name">'+data[key].brewery_name+'</span><br /><span  class="brewery-city ">'+data[key].brewery_city+'</span><br /><span  class="brewery-url">'+data[key].brewery_url+'</span></p><p><span class="ui-li-desc beer-glass">Pint: $'+data[key].beer_glass_price+'</span><span class="ui-li-desc beer-growler">Growler: $'+data[key].beer_growler_price+'</span></p></a></div></div>');
+    });
+            
+               //$('#beers-gridview').append(splashad);
+			// $('#beers-gridview').trigger('create');
+			
+// ADJUST BEER DESCRIPTION TO FIT                   
+              $('.beer-desc').dotdotdot();
+              
+// LOAD BEER SLIDESHOW
+			    ind=-1;
+			    flg='s';
+			    $('#splash-block').camera({thumbnails: false,  loader: 'none',transperiod: 750, time: 10000,fx:'scrollRight', opacityOnGrid: false, pagination: false,height: '106%',portrait:false, onStartTransition: function(){
+			 	ind++;
+			    
+	
+			     if (ind <= totbeers-1){var beerid = '#'+data[ind].id;}else{var beerid = '#'+data[0].id;}
+			     
+			     if (ind ==10 && flg=="m"){
+				$('.marquee').hide('fast');
+				 $('#splash-block').cameraStop();
+				 $('#main-wrapper').hide();
+				 $('#feature-block').hide();
+				 $('#main-slideshow').show();
+				 $('#main-slideshow').html(cycledata);
+				 $('#main-slideshow').trigger('create');
+ 			     cycleshow();
+    
+			     }
+			       
+			      // Full Batches
+			      if(ind/10 % 1 == 0 && ind < lastcyclebeer-1){
+			       
+			      for(var i=0; i<=totbeers-1; i++){ 
+			       
+				  var lastid = data[i].id;
+				  
+				  var beer = '#'+lastid; 
+				  if(flg == 's'){$(beer).hide();} 
+				  }
+				  
+				  lastind = ind+9;
+				  for(var i=ind; i<=lastind; i++){ 
+				  var lastid = data[i].id; 
+				  var beer = '#'+lastid; 
+				  if(flg == 's'){$(beer).show();}  
+				  }
+				  
+				  $('#feature-block').hide();
+			     
+			     }
+			     		     
+			     			   
+			   // Remaining Beers
+			    if(ind == totcycles*10){
+			      for(var i=0; i<=totbeers-1; i++){ 
+				  var lastid = data[i].id; 
+				  var beer = '#'+lastid; 
+				  if(flg == 's'){$(beer).hide();}  				  }
+				  for(var i=ind; i<=ind+beerslastcycle-1; i++){ 
+				  var lastid = data[i].id; 
+				  var beer = '#'+lastid; 
+				  if(flg == 's'){$(beer).show();}  
+				  }
+				  if (flg =='s')$('#feature-block').show();
+			    }
+			   
+			   // Cycle Full Board Tiles
+			    if(ind == totbeers){
+				 if(flg == 's'){$('#splash-block').hide();flg='m';
+				 } 
+				 else{
+				 $('#splash-block').css('box-shadow', 'inset 0 0   20px yellow').show();
+				 flg='s';
+				 $('.marquee').hide('fast');
+				 $('#splash-block').cameraStop();
+				 $('#main-wrapper').hide();
+				 $('#feature-block').hide();
+				 $('#main-slideshow').show();
+				 $('#main-slideshow').html(cycledata);
+				 $('#main-slideshow').trigger('create');
+ 			     cycleshow();
+				 } 
+				 for(var x=0; x<=totbeers-1; x++){ 
+				  var lastid = data[x].id; 
+				  var beer = '#'+lastid; 
+				  $(beer).show();     
+				  } 	 
+				  $('#feature-block').hide(); 
+				  ind=-1; 
+			    }
+
+			 	function isOdd(num) { return num % 2;}
+			    
+				 $('.col1').css('box-shadow', 'none');
+			      if (flg=='s') $(beerid).css('box-shadow', 'inset 0 0   20px #c3996a'); 
+			     
+			  }			  
+			  });  
+			  		  
+			  /* $('#splash-block').css('border','0px solid green') */
+
+		  
+        } // END BEER LIST
+
+        
+            function onError(data, status){alert('error_getBeer'+status);}   
+
+			function listBeers(beerstatus){ 
+			$('#maximage').cycle('destroy');
+			 $('#main-slideshow').hide();
+			  $('#main-wrapper').html(wrapperdata).show();
+		     $('#feature-block').html(featuredata).show();
+		     
+				 //alert('getBeer'+beerid);
+                //var formData = $("#callAjaxForm").serialize();
+				 
+                $.ajax({
+                    type: "POST",
+                    url: "../listbeersx.php",
+                    cache: false,
+                    //data: formData,
+                    //data: {beer_status : beerstatus},
+                    data: {beer_view : "ACTIVE", beer_select : '',beer_sort : 'beer_name'},
+                    dataType:"json",
+                    success: onSuccessBeerList,
+                    error: onError
+                });
+			}	
+
+			
+			//getBeer(0);
+			var beerflag='n';
+			if(beerflag=='n'){ 
+             
+              cycleshow();
+              }
+              else {
+              
+	            listBeers('ACTIVE');  
+	              
+              }
+// LOAD MENU INTO AD-04-Content  
+			 $('#ad-04-content').load('../getmenuhappyhour.php #hhmenucontent',function(){
+			 
+					$('#ad-04-content').trigger('create');
+					$('#hhmenucontent').prepend('<h2 class="header">Happy Hour Menu</h2><h3 style="font-size:45px;text-align:center;">Daily 3 - 6 PM</h3>');
+					$('#hhmenucontent').append('<span style="font-size:10px;color:#888;">Food Menu </span><img height="25" width="155" src="http://locu.com/static/images/dev/poweredby-gray@2x.png" alt="Menu Powered by Locu"  style="margin-left:5px;vertical-align:middle;"/><span style="font-size:10px;margin-left:65px;color:#888;font-weight:bold;">Display DEVELOPED BY</span><img height="25" width="66" src="/images/datafog_logo_new.png" alt="Powered by Datafog" style="margin-left:10px;vertical-align:middle;"/>');
+					$('#wedge').attr('src','/list_icons/Salads_brown.png');
+					$('#hhmenucontent').css('max-height','1000px');
+					$('#hhmenucontent').css('max-width','650px');
+					$('#hhmenucontent').css('font-size','20px');
+					$('#hhmenucontent').css('color','#ffffff');
+					$('#ad-04-content').css('box-shadow', 'inset 0 0   20px #c3996a');
+					$('#hhmenucontent').css('background' ,'transparent url(/css/caption-bg_orig.png) 0 0 repeat'); 
+                 $('#ad-04-content').trigger('create');
+             
+                  });
+
+           // START CYCLE SCRIPTS
+            function cycleshow(){
+            
+            
+            
+                        
+           $('#specials-ad').append('<div id="specials" class="dropshad" style="display:inline-block;float:left;"><h2 class="header" style="text-align:center">Today\'s Specials</h2></div><div style="display:inline-block;float:right;width:49%;margin-top:50px;"><h2 class="header" style="font-size:60px;font-style:italic;margin-top:0px;">Try Our Philly Cheese Steak!</h2><img src="/images/cheesesteak_large.png" style="margin-top:50px;border:5px solid #000000;"/></div>');
+					 
+	 
+				// var formData = $("#specialsForm").serialize();
+  
+                $.ajax({
+                    type: "POST",
+                    url: "../getspecials.php",
+                    cache: false,
+                   /* data: formData,*/
+                    dataType:"json",
+                    success: onSuccessSpecials,
+                    error: onErrorSpecials
+                });
+  
+				 function onSuccessSpecials(data, status)
+        {
+         
+        
+			var spec1 ='<h2 class="title">'+data.special_1+'</h2><h3 class="heading">'+data.special_1h+'</h3><h4 class="subheading">'+data.special_1s+'</h4><p  class="details">'+data.special_1d+'</p>';
+			$('#specials').append(spec1);
+			var spec2 ='<h2 class="title">'+data.special_2+'</h2><h3 class="heading">'+data.special_2h+'</h3><h4 class="subheading">'+data.special_2s+'</h4><p  class="details">'+data.special_2d+'</p>';
+			$('#specials').append(spec2);
+			var spec3 ='<h2 class="title">'+data.special_3+'</h2><h3 class="heading">'+data.special_3h+'</h3><h4 class="subheading">'+data.special_3s+'</h4><p  class="details">'+data.special_3d+'</p>';
+			$('#specials').append(spec3);
+			var spec4 ='<h2 class="title">'+data.special_4+'</h2><h3 class="heading">'+data.special_4h+'</h3><h4 class="subheading">'+data.special_4s+'</h4><p  class="details">'+data.special_4d+'</p>';
+			$('#specials').append(spec4);
+			
+
+        }
+  
+        function onErrorSpecials(data, status)
+        {
+            // handle an error
+        }       
+			
+			
+		function getBeer2(beerid){ 
+				 //alert('getBeer'+beerid);
+                //var formData = $("#callAjaxForm").serialize();
+				 
+                $.ajax({
+                    type: "POST",
+                    url: "../getbeerx.php",
+                    cache: false,
+                    //data: formData,
+                    data: {beerid_req : beerid},
+                    dataType:"json",
+                    success: onSuccessBeerView,
+                    error: onError
+                });
+			}	
+			
+			 function onSuccessBeerView(data, status)
+        {
+          //alert('data:'+data); 
+         
+          if(data != false){ 
+          
+
+         
+         $('#beer').html('');
+         $('#beer').append('<div class="beer-special-header">Pour House Beer of the Day</div><div class="sbeer-slide" ><div class="slabel-block"><img src="'+data.beer_label_url+'"/><p class="sbeer-style">'+data.beer_style+'</p><p class="sbeer-abv">ABV: &nbsp;'+data.beer_abv+'%</p><p class="sbeer-ibu">IBUs: '+data.beer_ibu+'</p></div><h3 class="sbeer-name">'+data.beer_name+'</h3><p  id="sbeer-desc" class="sbeer-desc">'+data.beer_desc+'</p><div class="sbrewery-block"><img class="sbrewery-label" src="'+data.brewery_label_url+'"/><p  class="sbrewery-name">'+data.brewery_name+'</p><p class="sbrewery-city ">'+data.brewery_city+'</p><p class="sbrewery-url">'+data.brewery_url+'</p></div><div class="sprice-block"><span class="sbeer-glass">Pint: $3.50</span><span class="sbeer-growler">Growler: $'+data.beer_growler_price+'</span></div></div>');
+    
+	$('#beer').trigger('create');
+         
+         
+         
+         }else{}
+}
+
+function onError(data, status)
+        {
+            // handle an error
+            alert('error_getBeer'+status);
+        }   
+		 
+		 
+	 
+		 
+		  function onSuccessAdLoad(data, status) {
+		   
+          $('#ad-0'+data[0].id+'-content').append(data[0].ad_content);
+          $('#ad-0'+data[0].id+'-content').trigger('create');
+          }        
+          
+           function onErrorAdLoad(data, status){}
+		 
+		 function loadad(adid){ 
+		 $.ajax({
+                    type: "POST",
+                    url: "../updatead.php",
+                    cache: false,
+                    data: {adlist : 'loadsingle',loadid : adid},
+                    dataType:"json",
+                    success: onSuccessAdLoad,
+                    error: onErrorAdLoad
+                });
+				}
+		 
+		 //loadad(2);
+		 //loadad(6);
+		 // loadad(4);
+		   loadad(5);
+		   
+		   $.ajax({
+                    type: "POST",
+                    url: "../getbeerspecialsx.php",
+                    cache: false,
+                    data: {beercount : 1},
+                    dataType:"json",
+                    success: onSuccessBeerSpecial,
+                    error: onErrorBeerSpecial
+                });
+
+		   function onSuccessBeerSpecial(data, status) {getBeer2(data[0].id);}  
+		   function onErrorBeerSpecial(data, status) {getBeer2(54971);} 
+		 
+		 			
+		 			
+		 			var autos = 0;
+		 			var autoc = 6;
+		 			var pauser = 1;
+		 			var endf ='';
+		 			if(beerflag=='y'){ 
+		 				autos = 1;
+		 				autoc = 6;
+		 				pauser = 1;
+		 				//endf = "function() {$('#main-slideshow').hide();listBeers('ACTIVE'); }";
+		 			}
+		 			
+		  		 
+				$('#maximage').maximage({
+					cycleOptions: {
+						fx: 'fade',
+						speed: 1000, // Has to match the speed for CSS transitions in jQuery.maximage.css (lines 30 - 33)
+						timeout: 8000,
+						 prev: '#arrow_left',
+						 next: '#arrow_right',
+						pause: pauser,
+						 autostop: autos,
+						 autostopCount: autoc,
+						
+						   end: function() {$('#main-slideshow').hide();listBeers('ACTIVE'); },
+						  //end: listBeers('ACTIVE'),
+						before: function(last,current){
+						  //if($(current).find('.title').html()=="Smoked Meatball Sandwich"){
+						  //$('#maximage').cycle('pause');
+						  //$('#main-slideshow').hide();$('#main-wrapper').show(); 
+						  //$('#splash-block').cameraResume();
+						  //}
+						  
+							if(!$.browser.msie){
+								// Start HTML5 video when you arrive
+								if($(current).find('video').length > 0) $(current).find('video')[0].play();
+							}
+						},
+						after: function(last,current){
+						     
+							if(!$.browser.msie){
+								// Pauses HTML5 video when you leave it
+								if($(last).find('video').length > 0) $(last).find('video')[0].pause();
+							}
+						}
+					},
+					onFirstImageLoaded: function(){
+						jQuery('#cycle-loader').hide();
+						jQuery('#maximage').fadeIn('fast');
+					}
+				});
+	
+				// Helper function to Fill and Center the HTML5 Video
+				jQuery('video,object').maximage('maxcover');
+	
+				// To show it is dynamic html text
+				jQuery('.in-slide-content').delay(1200).fadeIn();
+			} 
+			
+			//cycleshow();
+
+           // END CYCLE SCRIPTS 
+                       
+        });
+    </script>
+  
+    <!-- JQM PAGE-->
+    <div data-role="page" id="callAjaxPage" data-theme="d"  >
+      <!--  <div data-role="header"  data-theme="b">
+            <h1>Beers Display</h1>
+        </div>-->
+  
+        <div data-role="content" style="background:#c7b299;padding:0px;padding-left:5px;"> <!-- style="background:#c7b299;padding:0px;padding-left:5px;"-->
+
+       <div id="main-wrapper">
+        
+        <div id="beer-camera"></div>
+        <div id="beers-gridview">
+	         <a href="#" data-inline="true" data-theme="b"  style="float:left;width:49.5%;margin-right:15px;"><div id="splash-block"></div></a>
+         </div> 
+        <ul id="beers-listview" data-role="listview" data-theme="b" data-inset="true" style= "display:none;">
+        <li>
+        <h3>Pour House Grill Beer Selection</h3>
+        <p>Here is a list of all our current beers on tap and growler.</p>
+       
+        </li>
+        </ul>
+       
+       </div>
+        
+        <div class="feature-block" id="feature-block" style="width:48.5%;float:right; "></div>
+        
+        <div id="marqueescroll" class="marquee">Pour Display</div>
+
+        
+                 
+        
+       <!-- BEGIN CYCLE -->
+       <div id="main-slideshow" > 
+		<a href="http://www.thepourhousegrill.com" id="logo"><img src="/images/Pour-House-Grill-logo-display.png" alt="Pour House Logo Overlay" style="float:right;"/></a>
+		<a href="" id="arrow_left"><img src="lib/images/demo/arrow_left.png" alt="Slide Left" /></a>
+		<a href="" id="arrow_right"><img src="lib/images/demo/arrow_right.png" alt="Slide Right" /></a>
+		<img id="cycle-loader" src="../lib/images/ajax-loader.gif" />
+		<div id="maximage">
+		 		<!-- Happy Hour Menu -->
+		 <div id="ad-04">
+		 <img src="/images/wood_rough.png" alt="" /> 
+				 <img id="gradient" src="lib/images/demo/gradient.png" alt="" /> 				
+				 <div id="ad-04-content" class="in-slide-content" style="display:none;margin:0px;padding:0px;float:none;position:relative;width:100%;"></div>			
+			 
+			 		</div> 
+
+		<!-- AD 1 -->
+			<div>
+				<!--<img src="../lib/images/demo/wall_portrait.jpg" alt="" />-->
+				 <img src="/images/Pour-House-cask-with-logo-large.png" alt=""  style="width:100%;"/> 
+				<img id="gradient" src="lib/images/demo/gradient.png" alt="" />
+				<div class="in-slide-content" style="display:none;">
+					<h2 class="header" style="font-size:95px;">Welcome to the Pour House Grill. <br /> &nbsp;Beer, Burgers, Wings and BBQ.</h2>
+					 
+				</div>
+			</div>
+		<!-- Grand Opening -->
+		 <div>
+		 <img src="/images/grand_opening.png" alt="" /> 
+				 <img id="gradient" src="lib/images/demo/gradient.png" alt="" /> 				
+				 <div  class="in-slide-content" style="display:none;margin:0px;padding:0px;float:none;position:relative; "></div>			 
+			 
+			 		</div>
+			 		
+			 		<!-- AD 1 YELP -->
+		 <div id="ad-05">
+		 <img src="/images/wood_rough.png" alt="" /> 
+				 <img id="gradient" src="lib/images/demo/gradient.png" alt="" /> 				
+				 <div id="ad-05-content" class="in-slide-content" style="display:none;margin:0px;padding:0px;float:none;position:relative;width:100%;"></div>			
+			 
+			 		</div>
+		
+		
+			<!-- AD 2 -->
+			<div>
+				<!--<img src="../lib/images/demo/wall_portrait.jpg" alt="" />-->
+				 <img src="/images/football.png" alt="" /> 
+				<img id="gradient" src="lib/images/demo/gradient.png" alt="" />
+				<div class="in-slide-content" style="display:none;">
+					<h2 class="header" style="font-size:90px;margin-top:0px;">NFL Sunday Ticket & ESPN Game Plan.<br /><br /><span style="font-size:110px;color:yellow;">Come in and Get your Game On!</span></h2>
+					 
+				</div>
+			</div>	
+					<!-- SPECIALS -->
+			 <div>
+				<!--<img src="../lib/images/demo/wall_portrait.jpg" alt="" />-->
+				 <!--<img src="/images/wood_bg_beach.png" alt="" /> -->
+				  <img src="/images/wood_rough.png" alt="" />
+				<img id="gradient" src="lib/images/demo/gradient.png" alt="" />
+				<div   id="specials-ad" class="in-slide-content" style="display:none;width:95%;">
+ 
+				</div>
+			</div>
+			
+			 		 		
+		<!-- BEER SPECIAL-->
+			 <div>
+				<!--<img src="../lib/images/demo/wall_portrait.jpg" alt="" />-->
+				 <img src="/images/wood_rough.png" alt="" /> 
+				 <img id="gradient" src="lib/images/demo/gradient.png" alt="" /> 				
+				 <div id="beer" class="in-slide-content" style="display:none;">
+									 
+				</div>
+			</div>
+			
+			 		
+			<!-- AD 4 Trip Advisor -->
+		<!-- <div id="ad-04">
+		 <img src="/images/wood_rough.png" alt="" /> 
+				 <img id="gradient" src="lib/images/demo/gradient.png" alt="" /> 				
+				 <div id="ad-04-content" class="in-slide-content" style="display:none;margin:0px;padding:0px;float:none;position:relative;width:100%;"></div>			
+			 
+			 		</div>-->
+				<!-- AD 1 YELP -->
+		 <!-- <div id="ad-02">
+		 <img src="/images/wood_rough.png" alt="" /> 
+				 <img id="gradient" src="lib/images/demo/gradient.png" alt="" /> 				
+				 <div id="ad-02-content" class="in-slide-content" style="display:none;margin:0px;padding:0px;float:none;position:relative;width:100%;"></div>			
+			 
+			 		</div>-->
+			<!-- AD 6 URBAN SPOON -->
+		<!--  <div id="ad-06">
+		 <img src="/images/wood_rough.png" alt="" /> 
+				 <img id="gradient" src="lib/images/demo/gradient.png" alt="" /> 				
+				 <div id="ad-06-content" class="in-slide-content" style="display:none;margin:0px;padding:0px;float:none;position:relative;width:100%;"></div>			
+			 
+			 		</div>-->
+
+			 		
+		</div>
+		
+	</div>
+       <!-- END CYCLE --> 
+                </div>
+  
+         <!--<div data-role="footer" data-theme="b">
+            <h1></h1>
+ 
+        </div> -->
+        
+            </div>
+</body>
+</html>

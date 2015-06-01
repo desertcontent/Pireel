@@ -1,0 +1,2 @@
+AuthName "beer-admin"
+AuthUserFile "/home1/advegas/.htpasswds/public_html/thepourhousegrill.com/beer-admin/passwd"

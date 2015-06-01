@@ -1,0 +1,135 @@
+
+.col1, .col2, .col3{width:24.5%;min-height:100px;min-width:425px;margin:1px; }
+.col1 img{position:relative;float:left;width:100px;height:100px;max-width:100px; max-height:100px;
+	-webkit-box-shadow:inset 0  0    3px #ddd;
+    -moz-box-shadow:inset  0 0   3px #ddd;
+    box-shadow:inset 0 0   3px #ddd;padding:8px;	
+}
+.col1 h3{text-align:left;margin:0px;margin-left:125px;}
+.col1 p{text-align:left;margin:0px;margin-left:125px;}
+.col1 p.beer-desc{padding-top:10px;white-space:normal;max-width:400px;height:55px;text-overflow:ellipsis;display:none;} 
+.col1 .beer-style{font-weight:normal;font-size:90%;}
+.col1 .brewery-name{font-weight:normal;padding-top:10px;}
+.col1 .brewery-city{font-weight:normal;font-size:90%;}
+.col1 .brewery-url{font-weight:normal;font-size:90%;}
+.col1 p.beer-abv{font-weight:bold;font-size:16px;display:inline-block;padding-top:10px;margin-left:10px;float:left;clear:left;}
+.col1 p.beer-ibu{font-weight:bold;font-size:16px;display:inline-block;padding-top:10px;margin-left:10px;float:left;}
+.col1 p.beer-glass{font-weight:bold;font-size:16px;display:inline-block;padding-top:10px;margin-left:10px;float:right;}
+.col1 p.beer-growler{font-weight:bold;font-size:16px;display:inline-block;padding-top:10px;margin-left:10px;float:right;}
+.col1 img.phlogo{width:125px;max-width:125px;height:auto;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;padding:0px;margin-right:25px;}
+
+.camera_target {
+	
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius:20px;	
+	
+	
+}
+
+.splash-block{max-width:44%;}
+.beer-splash{/*background-color:#c7b299;*/}
+.beer-splash div{
+	
+-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius:20px;	
+  
+}
+a.colx{
+width:100%;
+min-height:950px;
+min-width:100%;
+margin:1px;
+text-align:left;
+background:transparent url(../css/caption-bg_orig.png) 0 0 repeat; 	
+}
+.colx img{position:relative;float:left;width:200px;height:200px;max-width:200px; max-height:200px;
+	-webkit-box-shadow:inset 0  0    3px #ddd;
+    -moz-box-shadow:inset  0 0   3px #ddd;
+    box-shadow:inset 0 0   3px #ddd;
+    padding:8px;
+   
+}
+.colx h3{text-align:left;margin:0px;padding:25px;padding-left:25px;}
+.colx p{text-align:left;margin:0px;padding-left:25px;float:left;width:100%}
+
+.colx .beer-name{font-size:50px;padding:15px;padding-left:55px;margin-top:25px;margin-bottom:25px;
+font-weight:normal;white-space:nowrap;overflow:hidden;float:left;clear:left;background-color:#533a19;width:90%;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius:20px;
+	height:60px;min-height:60px; text-overflow:ellipsis; 	
+}
+
+.colx .beer-style{font-weight:normal;font-size:50px;padding-left:20px;padding-top:5px;}
+.brewery-block{padding-top:25px;}
+.colx .brewery-label{height:125px;width:125px;float:left;margin-right:15px;}
+.colx .brewery-name{font-size:30px; padding-top:0px; }
+.colx .brewery-city{font-size:30px; font-weight:normal;padding-left:0px;    }
+.colx .brewery-url{font-weight:normal;font-size:30px; padding-left:0px;    }
+.colx .beer-desc{padding-top: 0px;max-width:80%;height:260px;min-height:260px;text-overflow:ellipsis;white-space:normal;display:block; font-size:28px;float:left;}  
+.label-block{ width:100%;padding-top:25px;}
+.colx span.beer-abv{font-weight:bold;font-size:40px; margin-top:25px;margin-left:20px; }
+.colx span.beer-ibu{font-weight:bold;font-size:40px; margin-top:25px;margin-left:20px;  }	
+.colx span.beer-glass{font-weight:bold;font-size:45px; padding:10px; margin-right:50px; float:right;margin-top:25px; }
+.colx span.beer-growler{font-weight:bold;font-size:45px; margin-top:25px;padding:10px;margin-left: 0px;  }	
+
+  
+
+
+	
+ 
+
+.company-block{width:48.75%;min-width:880px;border: 3px dashed #fff;background:#4E381F url(/images/Pour-House-cask-with-logo-transparent.png) 725px 0 no-repeat; }
+.company-block h3{font-size:22px;}
+img.displayqr{float:right;width:53px;webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;padding:0px;}
+.company-block p.brewery-name{font-size:22px;}
+#test{
+background:transparent url(../css/caption-bg_orig.png) 0 0 repeat;
+padding:10px;padding-top:25px;
+-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	-khtml-border-radius:10px;
+	border-radius:10px;	
+	width:450px;
+	display:inline-block;float:left;
+}
+#test2{display:inline-block;width:225px;float:left;padding-top:15px;}
+#test2 h3, #test2 p{margin-left:25px;font-size:16px;}
+
+.feature-block{width:48.50%; border: 0px dashed #fff;margin-top:5px;float:right;
+-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	-khtml-border-radius:10px;
+	border-radius:10px;	
+	 padding:10px;	
+	background: transparent url('/images/wood_bg_beach.png') 0 0 repeat; 
+}
+ #lamenucontent{display:inline-block;}
+ #menu-listview{border:none;box-shadow:none;}
+ #menu-listview > li{background:transparent;border:none;padding:5px;}
+  #menu-listview > h3{color:#533a19;}
+  #menu-listview > li > h3 {color:#533a19;}
+ /* #menu-listview > li > h3 i{color:#533a19;} */
+   #menu-listview > li > p{color:#533a19;}
+    #menu-listview > li > p.price{color:#533a19;font-size:14px;font-weight:bold;}
+
+ #menu-listview > .menu-divider{display:none;}
+ #lamenucontent > .header{font-size:36px;font-weight:bold;vertical-align:middle;margin-top:0px;margin-bottom:5px;color:#533a19;}
+ 
+#specials {display:inline-block;float:right;width:395px;}
+ 
+#specials > h1,#specials > h2,#specials > h3,#specials > h4,#specials > h5,#specials > h6,#specials > p{color:#533a19; font-weight:normal;margin:0px;} 
+ #specials > .header{font-size:36px;font-weight:bold;vertical-align:top;margin-top:0px;padding-top:47px;color:#533a19;}
+
+ 
+ #specials > .title{margin-top:25px;}
+ #specials > .heading{padding-top:10px;}
+ #specials > .subheading{padding-top:5px;}
+ #specials > .details{padding-top:5px;}  
+ #marqueeblock{background:transparent url(../css/caption-bg_orig.png) 0 0 repeat;}
+ .marqueescroll{font-size:50px;margin:0px;padding:5px; color:#fff;text-shadow:none;}

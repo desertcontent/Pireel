@@ -1,0 +1,6 @@
+<FilesMatch "a_admin_portrait.php">
+AuthType Basic
+AuthUserFile /etc/apache2/.htpasswd
+AuthName "Enter password"
+Require valid-user
+</FilesMatch>

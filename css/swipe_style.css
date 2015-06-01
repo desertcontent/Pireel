@@ -1,0 +1,56 @@
+.swipe {
+  padding-bottom:0px;
+  position:relative;
+   z-index:1; 
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden; 
+
+
+  }
+.swipe li div, .swipe div div div {
+   margin:0 10px;
+  padding:50px 10px;  
+    margin:0  0px;
+  padding: 0px  0px;    
+
+  background:#000000; /* #1db1ff */
+  font-weight:bold;
+  color:#fff;
+  font-size:20px;
+  text-align:center;
+
+  
+}
+
+.swipe-wrap {
+ overflow: hidden;  
+  position: relative;
+
+    }
+   
+.swipe-wrap div {
+  float:left;
+  position: relative;
+
+
+}
+
+.swipe-wrap div div{
+        width:100%; 
+        max-height:80%     
+        }
+      
+.swipe-wrap div div img{
+   float:left;  
+      width:100%;
+  position: relative;
+ 
+}
+ 
+.swipe-nav{text-align:center;}
+
+.swipe-nav a.ui-link {
+
+font-variant:small-caps;
+font-weight:normal;
+}
